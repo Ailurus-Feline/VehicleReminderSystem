@@ -1,7 +1,6 @@
 #pragma once
 #include <chrono>
 #include <string>
-#include <utility>
 
 // Defines class Vehicle for storing and checking document expiry info.
 namespace vrs {
