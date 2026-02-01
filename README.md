@@ -1,72 +1,71 @@
-# Vehicle Reminder System (C++)
+# Vehicle Compliance Checker (C++ / C#)
 
-### 🧭 Project Overview
-This project is a lightweight **vehicle document reminder system** developed in **C++**.  
-It helps small companies automatically track and alert vehicle-related expiry dates such as:
-- Driver's License Expiry
-- Permit Expiry
-- Annual Vehicle Inspection Expiry
+## Project Overview
+Vehicle Compliance Checker is a lightweight, data-driven compliance tracking system for logistics and fleet-based SMEs.  
+It models vehicle and driver document expiry as a **deterministic time-based state problem**, enabling accurate detection of upcoming non-compliance and preventing missed renewals.
 
-The program imports data from an Excel (converted to CSV) file, stores it in a database, and automatically checks upcoming deadlines.  
-When an expiry date is approaching, it issues reminders **30 days before** and repeats every **10 days** until marked as processed.
+The system uses **C++** as the core validation and time computation engine, and **C#** as a cross-platform presentation layer.  
+Vehicle records are ingested from structured CSV data, validated against a strict schema, and evaluated using modern time logic (`std::chrono`).  
+Compliance results are exposed via a CLI, JSON contract, and a native GUI for rapid inspection and decision-making.
 
 ---
 
-### ⚙️ Core Features
-- Import vehicle information from Excel (CSV format)
-- Store and manage data in SQLite database
-- Automatic reminder calculation based on current date
-- Reminder repeat every 10 days until processed
-- Mark as “handled” to stop notifications
-- Optional future GUI (Qt)
+## Core Components
+- **C++ Core Engine**
+  - CSV parsing and schema validation
+  - Deterministic expiry and threshold computation
+  - Time-based compliance classification using `std::chrono`
+
+- **C# Application Layer**
+  - Cross-platform GUI built with Avalonia
+  - Visualisation of compliance status and expiry signals
+  - Consumption of JSON outputs from the core engine
 
 ---
 
-### 🧩 Data Fields
+## Core Features
+- Parse and validate vehicle records from CSV data
+- Detect schema violations and incomplete entries
+- Deterministic time-based expiry evaluation
+- Configurable pre-expiry warning windows (e.g. 30 days)
+- Machine-readable JSON interface for cross-language integration
+- Clear separation between computation logic and I/O / UI layers
+
+---
+
+## Data Model (CSV Schema)
 | Field | Description |
-|-------|--------------|
-| Company Name | Name of the company |
-| Vehicle Number | Plate number or vehicle ID |
-| Driver License Expiry | Expiry date of the driver’s license |
-| Permit Expiry | Expiry date of the operating permit |
-| Inspection Expiry | Expiry date of annual inspection |
-| Last Reminder | Date of last alert |
-| Processed | 0 = Not handled, 1 = Handled |
+|------|-------------|
+| Company Name | Fleet owner or operating company |
+| Vehicle ID | Plate number or internal identifier |
+| Driver License Expiry | Driver license expiry date |
+| Permit Expiry | Operating permit expiry date |
+| Inspection Expiry | Annual inspection expiry date |
+| Last Reminder | Timestamp of last reminder |
+| Processed | 0 = pending, 1 = resolved |
 
 ---
 
-### 🏗️ Planned Project Structure
-VehicleReminderSystem/
-├── src/ # C++ source files (.cpp, .h)
-├── data/ # Excel or CSV input data
-├── docs/ # Design notes, requirements, logs
-├── build/ # Compiled output (ignored by Git)
-├── .gitignore
+## Project Structure
+VehicleComplianceChecker/
+├── core/ # C++ validation and time logic
+├── cli/ # C++ command-line interface
+├── gui/ # C# Avalonia application
+├── data/ # CSV datasets
+├── docs/ # Design notes
+├── build/ # Build artifacts (ignored)
 └── README.md
 
 ---
 
-### 🧠 Development Plan
-| Phase | Goal | Status |
-|-------|------|--------|
-| 1 | CSV parsing | ✅ |
-| 2 | Date comparison logic | ⏳ |
-| 3 | SQLite integration | ⏳ |
-| 4 | Reminder scheduling | ⏳ |
-| 5 | GUI / Notifications | 🔜 |
+## Design Focus
+- Deterministic, reproducible compliance decisions
+- Strong separation between engine and presentation layers
+- Language-agnostic JSON contract between C++ and C#
+- Performance-oriented core with extensible interfaces
 
 ---
 
-### 💡 Future Improvements
-- Add graphical interface using Qt
-- Add email or desktop notifications
-- Log history of reminders
-- Export monthly reports
-
----
-
-### 👤 Author
+## Author
 Developed by *Ailurus*  
-For internal use in a small company (practice project).  
-First version started on macOS in November 2025.
-# Vehicle Reminder System
+Engineering practice project focused on time-based modelling, system design, and cross-language architecture.
