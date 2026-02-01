@@ -1,10 +1,10 @@
 #pragma once
 #include <chrono>
 #include <string>
+#include <utility>
 
 // Defines class Vehicle for storing and checking document expiry info.
 namespace vrs {
-
     // A single vehicle and its document expiration data.
     class Vehicle {
         private:
@@ -22,7 +22,7 @@ namespace vrs {
                 using namespace std::chrono;
 
                 const auto today = floor<days>(system_clock::now());
-                const auto &expiry = sys_days(expiry_date);
+                const auto expiry = sys_days(expiry_date);
 
                 return (expiry - today <= reminder_time);
             };
