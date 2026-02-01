@@ -47,14 +47,13 @@ Compliance results are exposed via a CLI, JSON contract, and a native GUI for ra
 ---
 
 ## Project Structure
-VehicleComplianceChecker/
-├── core/ # C++ validation and time logic
-├── cli/ # C++ command-line interface
-├── gui/ # C# Avalonia application
-├── data/ # CSV datasets
-├── docs/ # Design notes
-├── build/ # Build artifacts (ignored)
-└── README.md
+- core/   — C++ validation and time logic  
+- cli/    — C++ command-line interface  
+- gui/    — C# Avalonia GUI  
+- data/   — CSV datasets  
+- docs/   — Design notes and documentation  
+- build/  — Build artifacts (ignored)  
+- README.md
 
 ---
 
